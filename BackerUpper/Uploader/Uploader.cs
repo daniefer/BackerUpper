@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 using Amazon.Glacier;
 using Amazon.Glacier.Model;
 using Amazon.Glacier.Transfer;
-using Amazon.Runtime.CredentialManagement;
 using BackerUpper.Configuration;
-using GlacierBackupService.Models;
+using BackerUpper.Extensions;
+using BackerUpper.Helpers;
+using BackerUpper.Models;
 using NLog;
 
-namespace GlacierBackupService
+namespace BackerUpper.Uploader
 {
     public class Uploader : IUploadProvider
     {

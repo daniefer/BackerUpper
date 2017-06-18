@@ -1,4 +1,4 @@
-﻿namespace GlacierBackupService.Models
+﻿namespace BackerUpper.Models
 {
     public class VerfiedUploadLocation
     {

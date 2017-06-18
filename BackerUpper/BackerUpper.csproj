@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1D68914A-8770-44C4-851A-EF34A7BFC83D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GlacierBackupService</RootNamespace>
-    <AssemblyName>GlacierBackupService</AssemblyName>
+    <RootNamespace>BackerUpper</RootNamespace>
+    <AssemblyName>BackerUpper</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

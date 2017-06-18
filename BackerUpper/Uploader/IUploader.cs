@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using GlacierBackupService.Models;
+using BackerUpper.Models;
 
-namespace GlacierBackupService
+namespace BackerUpper.Uploader
 {
     public interface IUploadProvider
     {

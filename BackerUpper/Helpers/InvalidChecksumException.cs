@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace GlacierBackupService
+namespace BackerUpper.Helpers
 {
     [Serializable]
     internal class InvalidChecksumException : Exception

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using BackerUpper.Configuration;
 
-namespace GlacierBackupService
+namespace BackerUpper.Models
 {
     public class VerifiedBackupLocation : BackupLocation
     {

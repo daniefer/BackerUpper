@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace GlacierBackupService
+namespace BackerUpper.Models
 {
     public class VerifiedFileLocation
     {

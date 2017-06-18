@@ -4,7 +4,7 @@ using System.Threading;
 using Autofac;
 using NLog;
 
-namespace GlacierBackupService
+namespace BackerUpper
 {
     class Program
     {
@@ -29,7 +29,7 @@ namespace GlacierBackupService
             builder.RegisterAssemblyTypes(assemblies)
                 .Where(t => !t.Name.StartsWith("System"))
                 .AsImplementedInterfaces();
-            builder.Register(context => LogManager.GetCurrentClassLogger()).As<ILogger>();
+            builder.Register(context => LogManager.GetLogger("BackerUpper")).As<ILogger>();
             builder.Register(context =>
             {
                 var config = ConfigurationManager.GetSection("backerUpper");

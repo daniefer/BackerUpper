@@ -4,10 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GlacierBackupService.Crypto;
+using BackerUpper.Backup;
+using BackerUpper.Compress;
+using BackerUpper.Crypto;
+using BackerUpper.Models;
+using BackerUpper.Uploader;
 using NLog;
 
-namespace GlacierBackupService
+namespace BackerUpper
 {
     public class BackupManager : IBackupManager
     {
@@ -32,13 +36,14 @@ namespace GlacierBackupService
 
         public async Task Backup(CancellationToken cancellationToken)
         {
+            var progress = new UploadProgress(_logger);
             var backupLocations = _backupProvider.BackupDirectories();
                 _logger.Trace("Directories being backed up: {0}", string.Join(", ", backupLocations.Select(file => file.FilePath)));
-            var compressedLocations = await _compressionProvider.CompressAsync(backupLocations, cancellationToken).ConfigureAwait(false);
+            var compressedLocations = await _compressionProvider.CompressAsync(backupLocations, progress, cancellationToken).ConfigureAwait(false);
                 _logger.Trace("Compressed back ups: {0}", string.Join(", ", compressedLocations.Select(file => file.FileInfo.FullName)));
             var encrypedLocations = await _cryptoProvider.Encrypt(compressedLocations, cancellationToken).ConfigureAwait(false);
             _logger.Trace("Encrypted back ups: {0}", string.Join(", ", encrypedLocations.Select(file => file.FileInfo.FullName)));
-            var uploadedLocations = await _uploadProvider.Upload(encrypedLocations, new UploadProgress(_logger), cancellationToken).ConfigureAwait(false);
+            var uploadedLocations = await _uploadProvider.Upload(encrypedLocations, progress, cancellationToken).ConfigureAwait(false);
                 _logger.Info("Files backed up: {0}", string.Join(", ", uploadedLocations.Select(file => $"ArchiveId({file.ArchiveId})|Description({file.BackupDescription})")));
             await CleanupFiles(compressedLocations.Concat(encrypedLocations), cancellationToken).ConfigureAwait(false);
         }

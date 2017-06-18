@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 
-namespace GlacierBackupService.Helpers
+namespace BackerUpper.Helpers
 {
     /// <summary>
     /// Copied from http://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html
